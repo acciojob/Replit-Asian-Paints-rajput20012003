@@ -1,16 +1,68 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Color Changer</title>
+  <style>
+    #grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .grid-item {
+      width: 100px;
+      height: 100px;
+      background-color: transparent;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div id="grid-container">
+    <div class="grid-item" id="1">1</div>
+    <div class="grid-item" id="2">2</div>
+    <div class="grid-item" id="3">3</div>
+    <div class="grid-item" id="4">4</div>
+    <div class="grid-item" id="5">5</div>
+    <div class="grid-item" id="6">6</div>
+    <div class="grid-item" id="7">7</div>
+    <div class="grid-item" id="8">8</div>
+    <div class="grid-item" id="9">9</div>
+  </div>
+  <div>
+    <label for="block_id">Block ID:</label>
+    <input type="text" id="block_id">
+    <label for="color_id">Color:</label>
+    <input type="color" id="color_id">
+    <button id="change_button">Change Color</button>
+    <button id="reset_button">Reset</button>
+  </div>
 
+  <script>
+    document.getElementById('change_button').addEventListener('click', function() {
+      var blockId = document.getElementById('block_id').value;
+      var color = document.getElementById('color_id').value;
+      var block = document.getElementById(blockId);
+      if (block) {
+        document.querySelectorAll('.grid-item').forEach(function(item) {
+          item.style.backgroundColor = 'transparent';
+        });
+        block.style.backgroundColor = color;
+      } else {
+        alert('Invalid block ID!');
+      }
+    });
+
+    document.getElementById('reset_button').addEventListener('click', function() {
+      document.querySelectorAll('.grid-item').forEach(function(item) {
+        item.style.backgroundColor = 'transparent';
+      });
+    });
+  </script>
 </body>
-
 </html>
